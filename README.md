@@ -12,3 +12,29 @@
 4. Data fetching
 5. API routes
 6. Styling
+
+# React server component
+
+## 1. Server component (default)
+
+-All react component in Next.js are server component by default
+-
+
+
+## 2. Client Component
+-Can use react hooks, events, user interaction.
+-Traditional react components
+-Use the directive `use client` at the top of component file
+
+## 3. Routing
+
+-File based routing
+-All routes must be inside `src/app` directory
+-Every routed must have `page.js` or `page.jsx` file
+-`page.js` or `page.jsx` must have a default export
+
+
+
+1. Simple routed
+
+-Create a folder inside
