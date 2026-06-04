@@ -1,9 +1,9 @@
 # Next.js
 
--React.js full-stack framework for web development
--In addition to building UI, next.js also provides features like routing, optimization, data fetching, etc.
--It uses react server component
--Opinionated framework(file, folder conventions)
+- React.js full-stack framework for web development
+- In addition to building UI, next.js also provides features like routing, optimization, data fetching, etc.
+- It uses react server component
+- Opinionated framework(file, folder conventions)
 
 # Features
 1. Routing: file based routing [about page banaunu cha bhaye about folder banaune ani about page ko file]
@@ -17,24 +17,69 @@
 
 ## 1. Server component (default)
 
--All react component in Next.js are server component by default
--
+- All react component in Next.js are server component by default
+- Server side tasks like data fetching , files read, database data  fetching, async tasks.
+- Cannot use react hooks, events , user interaction.
 
 
 ## 2. Client Component
--Can use react hooks, events, user interaction.
--Traditional react components
--Use the directive `use client` at the top of component file
+- Can use react hooks, events, user interaction.
+- Traditional react components
+- Use the directive `use client` at the top of component file
+
 
 ## 3. Routing
 
--File based routing
--All routes must be inside `src/app` directory
--Every routed must have `page.js` or `page.jsx` file
--`page.js` or `page.jsx` must have a default export
+- File based routing
+- All routes must be inside `src/app` directory
+- Every routed must have `page.js` or `page.jsx` file
+- `page.js` or `page.jsx` must have a default export
+
+1. Simple routes
+
+- Create a folder inside /src/app and add a page.js file
+- For example:
+- /src/app/about/page.js
+- /src/app/contact/page.js
+
+2. Nested routes
+
+- Create a foledr inside folder for nested routes
+- src/app/courses/frontend/react/page.js
+- src/app/courses/frontend/next/page.js
+- src/app/courses/backend/express/page.js
+- src/app/courses/backend/laravel/page.js
+
+3. Dyanamic routes
+
+- Create a folder encloses by []
+- /src/app/products/[id]/page.js
+
+4. Nested dynamic routes
+
+- /src/app/product/[id]reviews/[reviewId]/page.js
+
+5. Catch all segments
+
+- /src/app/blogs/[...blogId]/page.js
+
+6. Private folders
+
+- /src/app/_folder/
+
+7. Route groups
+
+- /src/app/(auth)
 
 
+## Layout
 
-1. Simple routed
+- UI component that is shared among different pages
+- `layout.js` or `layout.jsx`
 
--Create a folder inside
+## Special files of Next.js
+
+- page.js
+- not-found.js
+- layout.js
+- error.js //alwaysclient component
