@@ -1,14 +1,18 @@
+import Header from "@/components/Header";
 import "./globals.css";
 
-const RootLayout = ({ children }) => {
+export const metadata = {
+  title: "E-fashion",
+  description: "Online ecommerce platform for clothes and shoes",
+};
+
+export default function RootLayout({ children }) {
   return (
-    <html>
+    <html lang="en">
       <body>
-        RootLayout
+        <Header />
         {children}
       </body>
     </html>
   );
-};
-
-export default RootLayout;
+}

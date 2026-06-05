@@ -83,3 +83,26 @@
 - not-found.js
 - layout.js
 - error.js //alwaysclient component
+
+
+## params and SearchParams
+
+1. For Server component
+
+- params: dynamic route params, available on page.js and layout.js
+- searchParams: quer, available on page.js
+
+2.
+
+-
+-
+
+## Metadata
+
+- Metadata api is used to define metadata of the page
+- page.js/ layout.js
+- Useful of serach engine optimization
+
+
+## params, search params, metadata, SEO
+## SSR, CSR, SSG
