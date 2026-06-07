@@ -74,7 +74,7 @@
 
 ## Layout
 
-- UI component that is shared among different pages
+- UI component that is shared among different pages [not reusable but shared]
 - `layout.js` or `layout.jsx`
 
 ## Special files of Next.js
@@ -85,24 +85,31 @@
 - error.js //alwaysclient component
 
 
+## Link
+
+- <Link> for navigation, similar to <a>.
+- For programmatic navigation, use the  `useRouter` hook.
+
+
 ## params and SearchParams
 
 1. For Server component
 
-- params: dynamic route params, available on page.js and layout.js
-- searchParams: quer, available on page.js
+- params: dynamic route params, => available on page.js and layout.js
+- searchParams: query, available on page.js
 
-2.
+2. For Client Component
 
--
--
+- useParams()
+- UseSearchParams()
+
 
 ## Metadata
 
 - Metadata api is used to define metadata of the page
 - page.js/ layout.js
-- Useful of serach engine optimization
+- Useful of search engine optimization
+- static: metadata
+- dynamic: generateMetadata
 
-
-## params, search params, metadata, SEO
 ## SSR, CSR, SSG
