@@ -13,7 +13,7 @@
 5. API routes
 6. Styling
 
-# React server component
+### React server component
 
 ## 1. Server component (default)
 
@@ -112,4 +112,34 @@
 - static: metadata
 - dynamic: generateMetadata
 
-## SSR, CSR, SSG
+
+## Rendering: SSR, CSR, SSG
+
+- Process of converting/ transforming component code into UI.
+- Client side rendering (CSR) and Server side rendering(SSR).
+- Static site (SSG) are generated during app build.
+
+## CSR
+
+- If rendering is done in browser -> CSR
+
+## SSR
+
+- If rendering is done in server -> SSR
+
+
+## Client component
+
+- Interactivity
+- Event, User interaction
+- State management
+- To make client component, `use client` directive
+- Can be both CSR, SSR
+
+## Server component
+
+- Fetch data from API
+- Send API request
+- Metadata
+- By default, all components in Next.js are Server component.
+- Only SSR
