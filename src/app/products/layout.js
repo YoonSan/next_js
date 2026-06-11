@@ -1,12 +1,12 @@
+import ProductBanner from "./_components/Banner";
 
-
-const ProductLayout = ({children}) => {
+const ProductLayout = ({ children }) => {
   return (
-    <div>
-        ProductLayout
-        <div>{children}</div>
+    <div className="container mx-auto px-4 py-16"> 
+      <ProductBanner />
+      <div>{children}</div>
     </div>
-  )
-}
+  );
+};
 
-export default ProductLayout
+export default ProductLayout;

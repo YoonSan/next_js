@@ -1,9 +1,11 @@
-import React from 'react'
+import Spinner from "@/components/Spinner";
 
-const LoadingPage = () => {
+const Loading = () => {
   return (
-    <div>LoadingPage</div>
-  )
-}
+    <div className="flex justify-center py-16">
+      <Spinner />
+    </div>
+  );
+};
 
-export default LoadingPage
+export default Loading;

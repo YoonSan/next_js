@@ -1,11 +1,10 @@
-
-
 const Home = () => {
   return (
-  <section className="mx-auto">
-    <h1 className="text-5xl">Home Page</h1>
-  </section>
-  )
+    <div>
+      नमस्कार! म तपाईंलाई कसरी सहयोग गर्न सक्छु?
+      <p>this is some paragraph</p>
+    </div>
+  );
 };
 
 export default Home;

@@ -1,10 +1,13 @@
-import React from 'react'
+import React from "react";
 
-const ReviewOfProductPage = async ({params}) => {
-    const {id, reviewId} = await params;
+const ReviewOfProductPage = async ({ params }) => {
+  const { id, reviewId } = await params;
+
   return (
-    <div>Product Id: {id} and review Id: {reviewId}</div>
-  )
-}
+    <div>
+      Product Id: {id} and review id: {reviewId}
+    </div>
+  );
+};
 
-export default ReviewOfProductPage
+export default ReviewOfProductPage;
