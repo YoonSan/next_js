@@ -1,11 +1,23 @@
-const ProductsPage = async () => {
-  const products = await fetch(
-    "https://mern-20260320-api.vercel.app/api/products",
-  ).then((res) => res.json());
+import { getProducts } from "@/api/products";
+import ProductCard from "./_components/Card";
 
-  console.log(products);
+export const metadata = {
+  title: "Products",
+};
 
-  return <div>ProductsPage</div>;
+const ProductsPage = async ({ searchParams }) => {
+  const products = await getProducts();
+
+  return (
+    <>
+      <h2 className="mb-8 text-2xl dark:text-white">Featured products</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {products.map((product, index) => (
+          <ProductCard {...product} key={index} />
+        ))}
+      </div>
+    </>
+  );
 };
 
 export default ProductsPage;

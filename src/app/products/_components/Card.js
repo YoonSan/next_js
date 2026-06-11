@@ -3,8 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const ProductCard = () => {
-  return <div>ProductCard</div>;
 const ProductCard = ({ name, brand, category, price, _id, imageUrls }) => {
   return (
     <div className="product-card">
@@ -43,5 +41,5 @@ const ProductCard = ({ name, brand, category, price, _id, imageUrls }) => {
     </div>
   );
 };
-}
+
 export default ProductCard;

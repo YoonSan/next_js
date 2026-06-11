@@ -1,11 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   /* config options here */
-   images: {
+  images: {
     remotePatterns: [
       {
-        protocol: "https",
+        protocol: "http",
         hostname: "res.cloudinary.com",
+        port: "",
+        pathname: "/drt20nb92/image/**",
       },
     ],
   },
