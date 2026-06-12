@@ -3,24 +3,51 @@ import Link from "next/link";
 import { LOGIN_ROUTE } from "@/constants/routes";
 import { useForm } from "react-hook-form";
 import { signup } from "@/api/auth";
+import PasswordInput from "@/components/PasswordInput";
+import useAuthStore from "@/stores/authStore";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import Spinner from "@/components/Spinner";
 
 const RegisterPage = () => {
   const { register, handleSubmit } = useForm();
+  
+  const{ registerUser} = useAuthStore.getState();
+  const [loading, setLoading] = useState(false);
 
-  function submitForm(data) {
-    signup({
-      name: data.name,
-      email: data.email,
-      phone: data.phone,
-      password: data.password,
-      address: {
-        city: data.city,
-        province: data.province,
-      },
-    })
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
-  }
+ function submitForm(data) {
+  setLoading(true);
+
+  signup({
+    name: data.name,
+    email: data.email,
+    phone: data.phone,
+    password: data.password,
+    address: {
+      city: data.city,
+      province: data.province,
+    },
+  })
+  .then((response) => {
+          loginUser({ user: response.data });
+          toast.success("Register Successfull!");
+      })
+  
+        .catch((error) => {
+          console.error(error);
+          // Use optional chaining and a fallback string
+          const errorMessage = error.response?.data || error.message || "An unexpected error occurred";
+          toast.error(errorMessage);
+        })
+  
+        .finally(() => setLoading(false));
+
+  // console.log(data);
+  // signup(data)
+  // .then((res) => console.log(res))
+  // .catch((error) => console.log(error));
+    
+}
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
@@ -33,7 +60,6 @@ const RegisterPage = () => {
             <form
               onSubmit={handleSubmit(submitForm)}
               className="space-y-4 md:space-y-6"
-              action="#"
             >
               <div>
                 <label
@@ -49,6 +75,22 @@ const RegisterPage = () => {
                   placeholder="John doe"
                   required
                   {...register("name")}
+                />
+              </div>
+               <div>
+                <label
+                  htmlFor="email"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Your email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="name@company.com"
+                  required
+                  {...register("email")}
                 />
               </div>
               <div>
@@ -97,22 +139,6 @@ const RegisterPage = () => {
                   <option value="Sudur-Paschim">Sudur-Paschim</option>
                 </select>
               </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Your email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="name@company.com"
-                  required
-                  {...register("email")}
-                />
-              </div>
 
               <div>
                 <label
@@ -121,14 +147,7 @@ const RegisterPage = () => {
                 >
                   Password
                 </label>
-                <input
-                  type="password"
-                  id="password"
-                  placeholder="••••••••"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required
-                  {...register("password")}
-                />
+                <PasswordInput id = "password" {...register("password")} />
               </div>
 
               <div className="flex items-start">
@@ -156,12 +175,19 @@ const RegisterPage = () => {
                   </label>
                 </div>
               </div>
+              
               <button
                 type="submit"
-                className="w-full text-white bg-primary hover:bg-primary-dark focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                className="relative w-full text-white bg-primary hover:bg-primary-dark focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 disabled:opacity-85"
+              disabled={loading}
               >
-                Create an account
+                Create an Account
+                {loading && (
+                  <Spinner className = "absolute right-3 top-2 w-6! h-6!" />
+                )}
+                
               </button>
+
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Already have an account?{" "}
                 <Link

@@ -1,8 +1,28 @@
+'use client';
+
 import Image from "next/image";
 
 import hero from "@/assets/images/auth-hero.jpg";
+import useAuthStore from "@/stores/authStore";
+import { useRouter } from "next/router";
+import { HOME_ROUTE } from "@/constants/routes";
+import { useEffect } from "react";
 
 const AuthLayout = ({ children }) => {
+
+  // const { isAuthenticated } = useAuthStore.getState();
+
+  // const router = useRouter();
+
+  // useEffect(() => {
+  //   if (isAuthenticated){
+  //     //redirect to homepage
+  //     router.push(HOME_ROUTE);
+  //   }
+  // }, []);
+
+  
+
   return (
     <section className="py-12">
       <div className="container px-4 mx-auto">
